@@ -48,16 +48,16 @@ public class Main {
         System.out.println(ordersList);
     }
 
+    private static void sortDescendingByPrice(List<Order> ordersList) {
+        ordersList.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
+    }
+
     private static void sortAscendingByPriceThenByCity(List<Order> ordersList) {
         ordersList.sort((o1, o2) -> {
             int priceSortResult = o1.getPrice() - o2.getPrice();
             return priceSortResult == 0 ? o1.getUser().getCity().compareTo
                             (o2.getUser().getCity()) : priceSortResult;
         });
-    }
-
-    private static void sortDescendingByPrice(List<Order> ordersList) {
-        ordersList.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
     }
 
     private static void sortAscendingByOrderNameIdUserCity(List<Order> ordersList) {
