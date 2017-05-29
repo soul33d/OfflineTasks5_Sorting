@@ -37,16 +37,7 @@ public class Main {
         printList(orderListUSD);
 
         Map<String, List<Order>> mapOrdersList = new HashMap<>();
-        ordersList.forEach(order -> {
-            if (mapOrdersList.get(order.getUser().getCity()) == null){
-                List<Order> orderList = new ArrayList<>();
-                orderList.add(order);
-                mapOrdersList.put(order.getUser().getCity(), orderList);
-            } else {
-                mapOrdersList.get(order.getUser().getCity()).add(order);
-            }
-        });
-
+        splitListByUniqueUserCities(ordersList, mapOrdersList);
         mapOrdersList.forEach(Main::printList);
     }
 
@@ -112,6 +103,18 @@ public class Main {
 
     private static List<Order> filterByCurrency(List<Order> ordersList, Currency currency) {
         return ordersList.stream().filter(order -> order.getCurrency() == currency).collect(Collectors.toList());
+    }
+
+    private static void splitListByUniqueUserCities(List<Order> ordersList, Map<String, List<Order>> mapOrdersList) {
+        ordersList.forEach(order -> {
+            if (mapOrdersList.get(order.getUser().getCity()) == null){
+                List<Order> orderList = new ArrayList<>();
+                orderList.add(order);
+                mapOrdersList.put(order.getUser().getCity(), orderList);
+            } else {
+                mapOrdersList.get(order.getUser().getCity()).add(order);
+            }
+        });
     }
 
     private static void printList(List<Order> orderList){
