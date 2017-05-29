@@ -3,33 +3,64 @@ package com.homelearning;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.homelearning.Currency.*;
+import static com.homelearning.Currency.UAH;
+import static com.homelearning.Currency.USD;
 import static com.homelearning.Product.*;
 
 public class Main {
     public static void main(String[] args) {
-        List<Order> ordersList = new ArrayList<Order>(){
-            @Override
-            public String toString() {
-                StringBuilder sb = new StringBuilder("[");
-                for (Order order : this) {
-                    sb.append(order).append("; \n");
-                }
-                return sb.delete(sb.length() - 3, sb.length()).append("]").append("\n").toString();
+        List<Order> ordersList = new ArrayList<>();
+
+        fillOrdersList(ordersList);
+
+        printList(ordersList);
+        sortDescendingByPrice(ordersList);
+        printList(ordersList);
+
+        sortAscendingByPriceThenByCity(ordersList);
+        printList(ordersList);
+
+        sortAscendingByOrderNameIdUserCity(ordersList);
+        printList(ordersList);
+
+        removeDuplicates(ordersList);
+        printList(ordersList);
+
+        ordersList = removeByPriceLowBound(150, ordersList);
+        printList(ordersList);
+
+        List<Order> orderListUAH = filterByCurrency(ordersList, UAH);
+        List<Order> orderListUSD = filterByCurrency(ordersList, USD);
+        System.out.println(UAH + " list:");
+        printList(orderListUAH);
+        System.out.println(USD + " list:");
+        printList(orderListUSD);
+
+        Map<String, List<Order>> mapOrdersList = new HashMap<>();
+        ordersList.forEach(order -> {
+            if (mapOrdersList.get(order.getUser().getCity()) == null){
+                List<Order> orderList = new ArrayList<>();
+                orderList.add(order);
+                mapOrdersList.put(order.getUser().getCity(), orderList);
+            } else {
+                mapOrdersList.get(order.getUser().getCity()).add(order);
             }
-        };
+        });
 
+        mapOrdersList.forEach(Main::printList);
+    }
 
-        ordersList.add(new Order(USD, CHOCOLATE, "Roshen",
+    private static void fillOrdersList(List<Order> ordersList) {
+        ordersList.add(new Order(UAH, CHOCOLATE, "Roshen",
                 new User(0, "Vasya", "Pupkin", "Odessa", 5000)));
 
-        ordersList.add(new Order(USD, CHOCOLATE, "Roshen",
+        ordersList.add(new Order(UAH, CHOCOLATE, "Roshen",
                 new User(1, "Olya", "Polyakova", "Kyiv", 70_000)));
 
         ordersList.add(new Order(USD, CARAMEL, "Roshen",
                 new User(2, "Ivan", "Dulin", "Lviv", 8000)));
 
-        ordersList.add(new Order(USD, VINE, "Ashan",
+        ordersList.add(new Order(UAH, VINE, "Ashan",
                 new User(3, "Olya", "Molodaya", "Kharkiv", 3000)));
 
         ordersList.add(new Order(USD, TOY, "Toys house",
@@ -40,19 +71,6 @@ public class Main {
 
         ordersList.add(new Order(USD, PHONE, "Allo",
                 new User(5, "Philip", "Kirkorov", "Minsk", 50_000)));
-
-        System.out.println(ordersList);
-        sortDescendingByPrice(ordersList);
-        System.out.println(ordersList);
-
-        sortAscendingByPriceThenByCity(ordersList);
-        System.out.println(ordersList);
-
-        sortAscendingByOrderNameIdUserCity(ordersList);
-        System.out.println(ordersList);
-
-        removeDuplicates(ordersList);
-        System.out.println(ordersList);
     }
 
     private static void sortDescendingByPrice(List<Order> ordersList) {
@@ -85,5 +103,24 @@ public class Main {
                 i--;
             }
         }
+    }
+
+    private static List<Order> removeByPriceLowBound(int lowBound, List<Order> ordersList) {
+        System.out.println("Removing orders with price lower then " + lowBound + ".");
+        return ordersList.stream().filter(order -> order.getPrice() > lowBound).collect(Collectors.toList());
+    }
+
+    private static List<Order> filterByCurrency(List<Order> ordersList, Currency currency) {
+        return ordersList.stream().filter(order -> order.getCurrency() == currency).collect(Collectors.toList());
+    }
+
+    private static void printList(List<Order> orderList){
+        orderList.forEach(order -> System.out.println(order + "\n"));
+        System.out.println("\n");
+    }
+
+    private static void printList(String msg, List<Order> orderList){
+        System.out.println(msg + ":");
+        printList(orderList);
     }
 }
