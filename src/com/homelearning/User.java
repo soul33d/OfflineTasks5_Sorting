@@ -7,12 +7,12 @@ public class User {
     private String city;
     private int balance;
 
-    public User(String firstName, String lastName, String city, int balance) {
+    public User(int id, String firstName, String lastName, String city, int balance) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
         this.balance = balance;
-        id = System.nanoTime();
     }
 
     public long getId() {
