@@ -3,7 +3,9 @@ package com.homelearning;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+
 import static com.homelearning.Currency.*;
+import static com.homelearning.Product.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,22 +21,22 @@ public class Main {
         };
 
 
-        ordersList.add(new Order(USD, 20, "chocolate", "Roshen",
+        ordersList.add(new Order(USD, Chocolate, "Roshen",
                 new User("Vasya", "Pupkin", "Odessa", 5000)));
 
-        ordersList.add(new Order(USD, 20, "chocolate", "Roshen",
+        ordersList.add(new Order(USD, Chocolate, "Roshen",
                 new User("Olya", "Polyakova", "Kyiv", 70_000)));
 
-        ordersList.add(new Order(USD, 8, "caramel", "Roshen",
+        ordersList.add(new Order(USD, Caramel, "Roshen",
                 new User("Ivan", "Dulin", "Lviv", 8000)));
 
-        ordersList.add(new Order(USD, 160, "vine", "Ashan",
+        ordersList.add(new Order(USD, Vine, "Ashan",
                 new User("Olya", "Molodaya", "Kharkiv", 3000)));
 
-        ordersList.add(new Order(USD, 200, "toy", "Toys house",
+        ordersList.add(new Order(USD, Toy, "Toys house",
                 new User("Alina", "Volkova", "Poltava", 10_000)));
 
-        ordersList.add(new Order(USD, 10_000, "phone", "Allo",
+        ordersList.add(new Order(USD, Phone, "Allo",
                 new User("Philip", "Kirkorov", "Minsk", 50_000)));
 
         System.out.println(ordersList);

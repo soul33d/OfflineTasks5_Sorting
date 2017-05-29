@@ -8,13 +8,13 @@ public class Order {
     private String shopIdentificator;
     private User user;
 
-    public Order(Currency currency, int price, String itemName, String shopIdentificator, User user) {
+    public Order(Currency currency, Product product, String shopIdentificator, User user) {
         this.currency = currency;
-        this.price = price;
-        this.itemName = itemName;
+        this.price = product.getPrice();
+        this.itemName = product.name();
         this.shopIdentificator = shopIdentificator;
         this.user = user;
-        id = System.nanoTime();
+        id = product.ordinal();
     }
 
     public long getId() {
