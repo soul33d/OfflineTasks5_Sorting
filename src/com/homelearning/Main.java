@@ -21,22 +21,22 @@ public class Main {
         };
 
 
-        ordersList.add(new Order(USD, Chocolate, "Roshen",
+        ordersList.add(new Order(USD, CHOCOLATE, "Roshen",
                 new User("Vasya", "Pupkin", "Odessa", 5000)));
 
-        ordersList.add(new Order(USD, Chocolate, "Roshen",
+        ordersList.add(new Order(USD, CHOCOLATE, "Roshen",
                 new User("Olya", "Polyakova", "Kyiv", 70_000)));
 
-        ordersList.add(new Order(USD, Caramel, "Roshen",
+        ordersList.add(new Order(USD, CARAMEL, "Roshen",
                 new User("Ivan", "Dulin", "Lviv", 8000)));
 
-        ordersList.add(new Order(USD, Vine, "Ashan",
+        ordersList.add(new Order(USD, VINE, "Ashan",
                 new User("Olya", "Molodaya", "Kharkiv", 3000)));
 
-        ordersList.add(new Order(USD, Toy, "Toys house",
+        ordersList.add(new Order(USD, TOY, "Toys house",
                 new User("Alina", "Volkova", "Poltava", 10_000)));
 
-        ordersList.add(new Order(USD, Phone, "Allo",
+        ordersList.add(new Order(USD, PHONE, "Allo",
                 new User("Philip", "Kirkorov", "Minsk", 50_000)));
 
         System.out.println(ordersList);

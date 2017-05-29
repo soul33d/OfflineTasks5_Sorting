@@ -1,11 +1,11 @@
 package com.homelearning;
 
 public enum Product {
-    Chocolate{{price = 20;}},
-    Caramel{{price = 8;}},
-    Vine{{price = 160;}},
-    Toy{{price = 200;}},
-    Phone{{price = 10_000;}};
+    CHOCOLATE {{price = 20;}},
+    CARAMEL {{price = 8;}},
+    VINE {{price = 160;}},
+    TOY {{price = 200;}},
+    PHONE {{price = 10_000;}};
 
     protected int price;
 
