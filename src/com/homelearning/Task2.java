@@ -34,8 +34,8 @@ public class Task2 {
 
         List<Order> orderListUAH = filterByCurrency(ordersList, UAH);
         List<Order> orderListUSD = filterByCurrency(ordersList, USD);
-        printCollection(UAH + " list:", orderListUAH);
-        printCollection(USD + " list:", orderListUSD);
+        printCollection(UAH + " list", orderListUAH);
+        printCollection(USD + " list", orderListUSD);
 
         Map<String, List<Order>> mapOrdersList = new HashMap<>();
         splitListByUniqueUserCities(ordersList, mapOrdersList);
@@ -66,6 +66,12 @@ public class Task2 {
 
         orders.add(new Order(USD, PHONE, "Allo",
                 new User(5, "Philip", "Kirkorov", "Minsk", 50_000)));
+
+        orders.add(new Order(UAH, CARAMEL, "Allo",
+                new User(6, "Eugene", "Petrov", "Chernigov", 1000)));
+
+        orders.add(new Order(UAH, VINE, "Furshet",
+                new User(7, "Vitaliy", "Ostapenko", "Khorol", 5_000)));
     }
 
     private static void sortDescendingByPrice(List<Order> ordersList) {
