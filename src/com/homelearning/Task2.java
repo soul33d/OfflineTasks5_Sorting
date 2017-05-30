@@ -13,55 +13,58 @@ public class Task2 {
     public static void main(String[] args) {
         List<Order> ordersList = new ArrayList<>();
 
-        fillOrdersList(ordersList);
+        fillOrdersCollection(ordersList);
 
-        printList(ordersList);
+        printCollection(ordersList);
         sortDescendingByPrice(ordersList);
-        printList("Descending sort by price.", ordersList);
+        printCollection("Descending sort by price.", ordersList);
 
         sortAscendingByPriceThenByCity(ordersList);
-        printList("Ascending sort by price and city.", ordersList);
+        printCollection("Ascending sort by price and city.", ordersList);
 
         sortAscendingByOrderNameIdUserCity(ordersList);
-        printList("Ascending sort by Order name, Order id, user city.", ordersList);
+        printCollection("Ascending sort by Order name, Order id, user city.", ordersList);
 
         removeDuplicates(ordersList);
-        printList("Removing duplicates", ordersList);
+        printCollection("Removing duplicates", ordersList);
 
         int lowBound = 150;
         ordersList = removeByPriceLowBound(lowBound, ordersList);
-        printList("Removing orders with price lower then " + lowBound + ".", ordersList);
+        printCollection("Removing orders with price lower then " + lowBound + ".", ordersList);
 
         List<Order> orderListUAH = filterByCurrency(ordersList, UAH);
         List<Order> orderListUSD = filterByCurrency(ordersList, USD);
-        printList(UAH + " list:", orderListUAH);
-        printList(USD + " list:", orderListUSD);
+        printCollection(UAH + " list:", orderListUAH);
+        printCollection(USD + " list:", orderListUSD);
 
         Map<String, List<Order>> mapOrdersList = new HashMap<>();
         splitListByUniqueUserCities(ordersList, mapOrdersList);
-        mapOrdersList.forEach(Task2::printList);
+        mapOrdersList.forEach(Task2::printCollection);
     }
 
-    private static void fillOrdersList(List<Order> ordersList) {
-        ordersList.add(new Order(UAH, CHOCOLATE, "Roshen",
+    public static void fillOrdersCollection(Collection<Order> orders) {
+        orders.add(new Order(UAH, CHOCOLATE, "Roshen",
                 new User(0, "Vasya", "Pupkin", "Odessa", 5000)));
 
-        ordersList.add(new Order(UAH, CHOCOLATE, "Roshen",
+        orders.add(new Order(UAH, CHOCOLATE, "Roshen",
                 new User(1, "Olya", "Polyakova", "Kyiv", 70_000)));
 
-        ordersList.add(new Order(USD, CARAMEL, "Roshen",
+        orders.add(new Order(USD, CARAMEL, "Roshen",
                 new User(2, "Ivan", "Dulin", "Lviv", 8000)));
 
-        ordersList.add(new Order(UAH, VINE, "Ashan",
+        orders.add(new Order(UAH, VINE, "Ashan",
                 new User(3, "Olya", "Molodaya", "Kharkiv", 3000)));
 
-        ordersList.add(new Order(USD, TOY, "Toys house",
+        orders.add(new Order(USD, TOY, "Toys house",
                 new User(4, "Alina", "Volkova", "Poltava", 10_000)));
 
-        ordersList.add(new Order(USD, PHONE, "Allo",
+        orders.add(new Order(USD, TOY, "Toys house",
+                new User(4, "Alina", "Volkova", "Poltava", 10_000)));
+
+        orders.add(new Order(USD, PHONE, "Allo",
                 new User(5, "Philip", "Kirkorov", "Minsk", 50_000)));
 
-        ordersList.add(new Order(USD, PHONE, "Allo",
+        orders.add(new Order(USD, PHONE, "Allo",
                 new User(5, "Philip", "Kirkorov", "Minsk", 50_000)));
     }
 
@@ -113,13 +116,13 @@ public class Task2 {
         });
     }
 
-    private static void printList(List<Order> orderList){
-        orderList.forEach(order -> System.out.println(order + "\n"));
+    public static void printCollection(Collection<Order> orderCollection){
+        orderCollection.forEach(order -> System.out.println(order + "\n"));
         System.out.println("\n");
     }
 
-    private static void printList(String msg, List<Order> orderList){
+    public static void printCollection(String msg, Collection<Order> orderCollection){
         System.out.println(msg + ":");
-        printList(orderList);
+        printCollection(orderCollection);
     }
 }
