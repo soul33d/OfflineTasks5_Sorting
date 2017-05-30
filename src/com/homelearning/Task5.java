@@ -4,9 +4,8 @@ import java.util.*;
 
 public class Task5 {
 
-    private static Timer timer = new Timer();
-
     public static void main(String[] args) {
+        Timer timer = new Timer();
         List<Integer> integerArrayListSmaller = new ArrayList<>();
         List<Integer> integerArrayListBigger = new ArrayList<>();
         List<String> stringArrayListSmaller = new ArrayList<>();
