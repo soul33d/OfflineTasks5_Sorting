@@ -1,13 +1,15 @@
 package com.homelearning;
 
+import com.homelearning.task1.*;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.homelearning.Currency.UAH;
-import static com.homelearning.Currency.USD;
-import static com.homelearning.Product.*;
+import static com.homelearning.task1.Currency.UAH;
+import static com.homelearning.task1.Currency.USD;
+import static com.homelearning.task1.Product.*;
 
-public class Main {
+public class Task2 {
     public static void main(String[] args) {
         List<Order> ordersList = new ArrayList<>();
 
@@ -38,7 +40,7 @@ public class Main {
 
         Map<String, List<Order>> mapOrdersList = new HashMap<>();
         splitListByUniqueUserCities(ordersList, mapOrdersList);
-        mapOrdersList.forEach(Main::printList);
+        mapOrdersList.forEach(Task2::printList);
     }
 
     private static void fillOrdersList(List<Order> ordersList) {
@@ -101,7 +103,7 @@ public class Main {
         return ordersList.stream().filter(order -> order.getPrice() > lowBound).collect(Collectors.toList());
     }
 
-    private static List<Order> filterByCurrency(List<Order> ordersList, Currency currency) {
+    private static List<Order> filterByCurrency(List<Order> ordersList, com.homelearning.task1.Currency currency) {
         return ordersList.stream().filter(order -> order.getCurrency() == currency).collect(Collectors.toList());
     }
 

@@ -1,4 +1,4 @@
-package com.homelearning;
+package com.homelearning.task1;
 
 public class Order {
     private long id;
