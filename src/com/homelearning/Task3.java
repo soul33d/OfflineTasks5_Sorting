@@ -1,13 +1,14 @@
 package com.homelearning;
 
-import com.homelearning.task1.Currency;
 import com.homelearning.task1.Order;
 
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.TreeSet;
 
-import static com.homelearning.Task2.*;
+import static com.homelearning.Task2.fillOrdersCollection;
+import static com.homelearning.Task2.printCollection;
+import static com.homelearning.task1.Currency.USD;
 
 public class Task3 {
     public static void main(String[] args) {
@@ -18,14 +19,17 @@ public class Task3 {
         fillOrdersCollection(orderSet);
         printCollection(orderSet);
 
-        System.out.println("The most expensive order:\n" + orderSet.last() + "\n");
+        System.out.println("Finding Petrov's orders:");
+        orderSet.stream().filter(order -> order.getUser().getLastName().equals("Petrov")).forEach(System.out::println);
+
+        System.out.println("\nThe most expensive order:\n" + orderSet.last() + "\n");
 
         Iterator<Order> iterator = orderSet.iterator();
         while (iterator.hasNext()){
             Order order = iterator.next();
-            if (order.getCurrency() == Currency.USD) iterator.remove();
+            if (order.getCurrency() == USD) iterator.remove();
         }
 
-        printCollection(Currency.USD + " removed from set", orderSet);
+        printCollection(USD + " removed from set", orderSet);
     }
 }
