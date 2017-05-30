@@ -1,13 +1,17 @@
 package com.homelearning;
 
 public enum Product {
-    CHOCOLATE {{price = 20;}},
-    CARAMEL {{price = 8;}},
-    VINE {{price = 160;}},
-    TOY {{price = 200;}},
-    PHONE {{price = 10_000;}};
+    CHOCOLATE(20),
+    CARAMEL(8),
+    VINE(160),
+    TOY(200),
+    PHONE(10_000);
 
-    protected int price;
+    private int price;
+
+    Product(int price) {
+        this.price = price;
+    }
 
     public int getPrice() {
         return price;
