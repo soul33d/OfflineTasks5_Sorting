@@ -7,62 +7,62 @@ public class Task5 {
     private static Timer timer = new Timer();
 
     public static void main(String[] args) {
-        List<Integer> integerArrayList1000 = new ArrayList<>();
-        List<Integer> integerArrayList10_000 = new ArrayList<>();
-        List<String> stringArrayList1000 = new ArrayList<>();
-        List<String> stringArrayList10_000 = new ArrayList<>();
+        List<Integer> integerArrayListSmaller = new ArrayList<>();
+        List<Integer> integerArrayListBigger = new ArrayList<>();
+        List<String> stringArrayListSmaller = new ArrayList<>();
+        List<String> stringArrayListBigger = new ArrayList<>();
 
-        List<Integer> integerLinkedList1000 = new LinkedList<>();
-        List<Integer> integerLinkedList10_000 = new LinkedList<>();
-        List<String> stringLinkedList1000 = new LinkedList<>();
-        List<String> stringLinkedList10_000 = new LinkedList<>();
+        List<Integer> integerLinkedListSmaller = new LinkedList<>();
+        List<Integer> integerLinkedListBigger = new LinkedList<>();
+        List<String> stringLinkedListSmaller = new LinkedList<>();
+        List<String> stringLinkedListBigger = new LinkedList<>();
 
-        int smalllerSize = 10_000;
-        timer.measure( "Adding 1000 Integers to ArrayList : ",
-                () -> fillIntegerList (smalllerSize, integerArrayList1000));
-        int greaterSize = 1_000_000;
-        timer.measure("Adding 10_000 Integers to ArrayList : ",
-                () -> fillIntegerList(greaterSize, integerArrayList10_000));
-        timer.measure("Adding 1000 Integers to LinkedList : ",
-                () -> fillIntegerList(smalllerSize, integerLinkedList1000));
-        timer.measure("Adding 10_000 Integers to LinkedList : ",
-                () -> fillIntegerList(greaterSize, integerLinkedList10_000));
+        int smalllerSize = 1_000;
+        timer.measure( "Adding " + smalllerSize + " Integers to ArrayList : ",
+                () -> fillIntegerList (smalllerSize, integerArrayListSmaller));
+        int greaterSize = 100_000;
+        timer.measure("Adding " + greaterSize + " Integers to ArrayList : ",
+                () -> fillIntegerList(greaterSize, integerArrayListBigger));
+        timer.measure("Adding " + smalllerSize + " Integers to LinkedList : ",
+                () -> fillIntegerList(smalllerSize, integerLinkedListSmaller));
+        timer.measure("Adding " + greaterSize + " Integers to LinkedList : ",
+                () -> fillIntegerList(greaterSize, integerLinkedListBigger));
 
-        timer.measure("Adding 1000 Strings to ArrayList : ",
-                () -> fillStringList(smalllerSize, stringArrayList1000));
-        timer.measure("Adding 10_000 Strings to ArrayList : ",
-                () -> fillStringList(greaterSize, stringArrayList10_000));
-        timer.measure("Adding 1000 Strings to LinkedList :",
-                () -> fillStringList(smalllerSize, stringLinkedList1000));
-        timer.measure("Adding 10_000 Strings to LinkedList : ",
-                () -> fillStringList(greaterSize, stringLinkedList10_000));
+        timer.measure("Adding " + smalllerSize + " Strings to ArrayList : ",
+                () -> fillStringList(smalllerSize, stringArrayListSmaller));
+        timer.measure("Adding " + greaterSize + " Strings to ArrayList : ",
+                () -> fillStringList(greaterSize, stringArrayListBigger));
+        timer.measure("Adding " + smalllerSize + " Strings to LinkedList :",
+                () -> fillStringList(smalllerSize, stringLinkedListSmaller));
+        timer.measure("Adding " + greaterSize + " Strings to LinkedList : ",
+                () -> fillStringList(greaterSize, stringLinkedListBigger));
 
-        timer.measure("Setting 1000 Integers to middle of ArrayList : ",
-                () -> setIntegersAtMiddle (smalllerSize, integerArrayList1000));
-        timer.measure("Setting 10_000 Integers to middle of ArrayList : ",
-                () -> setIntegersAtMiddle (greaterSize, integerArrayList1000));
-        timer.measure("Setting 1000 Integers to middle of LinkedList : ",
-                () -> setIntegersAtMiddle (smalllerSize, integerLinkedList1000));
-        timer.measure("Setting 10_000 Integers to middle of LinkedList : ",
-                () -> setIntegersAtMiddle (greaterSize, integerLinkedList1000));
+        timer.measure("Setting " + smalllerSize + " Integers to middle of ArrayList : ",
+                () -> setIntegersAtMiddle (smalllerSize, integerArrayListSmaller));
+        timer.measure("Setting " + greaterSize + " Integers to middle of ArrayList : ",
+                () -> setIntegersAtMiddle (greaterSize, integerArrayListBigger));
+        timer.measure("Setting " + smalllerSize + " Integers to middle of LinkedList : ",
+                () -> setIntegersAtMiddle (smalllerSize, integerLinkedListSmaller));
+        timer.measure("Setting " + greaterSize + " Integers to middle of LinkedList : ",
+                () -> setIntegersAtMiddle (greaterSize, integerLinkedListBigger));
 
         timer.measure("Getting 100 times from the middle of ArrayList : ",
-                () -> getFromTheMiddle(100, integerArrayList1000));
+                () -> getFromTheMiddle(100, integerArrayListSmaller));
         timer.measure("Getting 100 times from the middle of ArrayList : ",
-                () -> getFromTheMiddle(100, integerArrayList10_000));
+                () -> getFromTheMiddle(100, integerArrayListBigger));
         timer.measure("Getting 100 times from the middle of LinkedList : ",
-                () -> getFromTheMiddle(100, integerLinkedList1000));
+                () -> getFromTheMiddle(100, integerLinkedListSmaller));
         timer.measure("Getting 100 times from the middle of LinkedList : ",
-                () -> getFromTheMiddle(100, integerLinkedList10_000));
+                () -> getFromTheMiddle(100, integerLinkedListBigger));
 
         timer.measure("Remove 100 times from the begining of ArrayList : ",
-                () -> removeFromTheBegining(100, integerArrayList1000));
+                () -> removeFromTheBegining(100, integerArrayListSmaller));
         timer.measure("Remove 100 times from the begining of ArrayList : ",
-                () -> removeFromTheBegining(100, integerArrayList10_000));
+                () -> removeFromTheBegining(100, integerArrayListBigger));
         timer.measure("Remove 100 times from the begining of LinkedList : ",
-                () -> removeFromTheBegining(100, integerLinkedList1000));
+                () -> removeFromTheBegining(100, integerLinkedListSmaller));
         timer.measure("Remove 100 times from the begining of LinkedList : ",
-                () -> removeFromTheBegining(100, integerLinkedList10_000));
+                () -> removeFromTheBegining(100, integerLinkedListBigger));
     }
 
     private static void fillIntegerList(int count, List<Integer> integerList) {
