@@ -17,26 +17,25 @@ public class Task2 {
 
         printList(ordersList);
         sortDescendingByPrice(ordersList);
-        printList(ordersList);
+        printList("Descending sort by price.", ordersList);
 
         sortAscendingByPriceThenByCity(ordersList);
-        printList(ordersList);
+        printList("Ascending sort by price and city.", ordersList);
 
         sortAscendingByOrderNameIdUserCity(ordersList);
-        printList(ordersList);
+        printList("Ascending sort by Order name, Order id, user city.", ordersList);
 
         removeDuplicates(ordersList);
-        printList(ordersList);
+        printList("Removing duplicates", ordersList);
 
-        ordersList = removeByPriceLowBound(150, ordersList);
-        printList(ordersList);
+        int lowBound = 150;
+        ordersList = removeByPriceLowBound(lowBound, ordersList);
+        printList("Removing orders with price lower then " + lowBound + ".", ordersList);
 
         List<Order> orderListUAH = filterByCurrency(ordersList, UAH);
         List<Order> orderListUSD = filterByCurrency(ordersList, USD);
-        System.out.println(UAH + " list:");
-        printList(orderListUAH);
-        System.out.println(USD + " list:");
-        printList(orderListUSD);
+        printList(UAH + " list:", orderListUAH);
+        printList(USD + " list:", orderListUSD);
 
         Map<String, List<Order>> mapOrdersList = new HashMap<>();
         splitListByUniqueUserCities(ordersList, mapOrdersList);
@@ -67,12 +66,10 @@ public class Task2 {
     }
 
     private static void sortDescendingByPrice(List<Order> ordersList) {
-        System.out.println("Descending sort by price.");
         ordersList.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
     }
 
     private static void sortAscendingByPriceThenByCity(List<Order> ordersList) {
-        System.out.println("Ascending sort by price and city.");
         ordersList.sort((o1, o2) -> {
             int priceSortResult = o1.getPrice() - o2.getPrice();
             return priceSortResult == 0 ? o1.getUser().getCity().compareTo
@@ -81,14 +78,12 @@ public class Task2 {
     }
 
     private static void sortAscendingByOrderNameIdUserCity(List<Order> ordersList) {
-        System.out.println("Ascending sort by Order name, Order id, user city.");
         ordersList.sort(Comparator.comparing(Order::getItemName)
                 .thenComparing(Comparator.comparing(Order::getId))
                 .thenComparing(Comparator.comparing(o -> o.getUser().getCity())));
     }
 
     private static void removeDuplicates(List<Order> ordersList) {
-        System.out.println("Removing duplicates");
         Set<Order> set = new HashSet<>(ordersList.size());
         for (int i = 0; i < ordersList.size(); i++) {
             if (!set.add(ordersList.get(i))) {
@@ -99,7 +94,6 @@ public class Task2 {
     }
 
     private static List<Order> removeByPriceLowBound(int lowBound, List<Order> ordersList) {
-        System.out.println("Removing orders with price lower then " + lowBound + ".");
         return ordersList.stream().filter(order -> order.getPrice() > lowBound).collect(Collectors.toList());
     }
 
